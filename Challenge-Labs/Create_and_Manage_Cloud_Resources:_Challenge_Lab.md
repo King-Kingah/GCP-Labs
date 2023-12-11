@@ -39,3 +39,13 @@ kubectl expose deployment hello-server \
           --type=LoadBalancer \
           --port 8080
 
+#### Task 3: Set up an HTTP load balancer
+Run command:
+
+cat << EOF > startup.sh
+#! /bin/bash
+apt-get update
+apt-get install -y nginx
+service nginx start
+sed -i -- 's/nginx/Google Cloud Platform - '"\$HOSTNAME"'/' /var/www/html/index.nginx-debian.html
+EOF
