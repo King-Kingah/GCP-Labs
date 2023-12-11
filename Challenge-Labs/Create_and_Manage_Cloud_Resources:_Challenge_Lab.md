@@ -82,3 +82,23 @@ gcloud compute backend-services create web-server-backend \
           --protocol HTTP \
           --http-health-checks http-basic-check \
           --global
+
+gcloud compute backend-services add-backend web-server-backend \
+          --instance-group web-server-group \
+          --instance-group-region us-east1 \
+          --global
+
+
+gcloud compute url-maps create web-server-map \
+          --default-service web-server-backend
+          
+gcloud compute target-http-proxies create http-lb-proxy \
+          --url-map web-server-map
+
+
+gcloud compute forwarding-rules create http-content-rule \
+        --global \
+        --target-http-proxy http-lb-proxy \
+        --ports 80
+        
+gcloud compute forwarding-rules list
