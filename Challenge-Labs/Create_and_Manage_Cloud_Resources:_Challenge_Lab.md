@@ -49,3 +49,36 @@ apt-get install -y nginx
 service nginx start
 sed -i -- 's/nginx/Google Cloud Platform - '"\$HOSTNAME"'/' /var/www/html/index.nginx-debian.html
 EOF
+
+
+gcloud compute instance-templates create web-server-template \
+          --metadata-from-file startup-script=startup.sh \
+          --network nucleus-vpc \
+          --machine-type g1-small \
+          --region us-east1
+
+
+gcloud compute instance-groups managed create web-server-group \
+          --base-instance-name web-server \
+          --size 2 \
+          --template web-server-template \
+          --region us-east1
+
+
+gcloud compute firewall-rules create web-server-firewall \
+          --allow tcp:80 \
+          --network nucleus-vpc
+          
+          
+gcloud compute http-health-checks create http-basic-check
+
+gcloud compute instance-groups managed \
+          set-named-ports web-server-group \
+          --named-ports http:80 \
+          --region us-east1
+
+
+gcloud compute backend-services create web-server-backend \
+          --protocol HTTP \
+          --http-health-checks http-basic-check \
+          --global
