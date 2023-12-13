@@ -15,3 +15,4 @@ This repository offers practical and well-documented solutions to a variety of G
 ### The Challenges:
 |     Challange Name     |     Description     |
 |   -------------------  |  -----------------  |
+|1. Challenge #1         | Simple description. |
