@@ -10,4 +10,3 @@ This repository offers practical and well-documented solutions to a variety of G
 - **Diverse Challenges**: Explore solutions for a wide range of challenges, categorized based on GCP services and use cases.
 - **Step-by-Step Guides**: Each solution comes with detailed, step-by-step guides to help you implement and understand the provided solutions effectively.
 - **Sample Code**: Access well-commented sample code and scripts that can be easily adapted for your specific needs.
-- **Community Contributions**: Contribute your own solutions and improvements to help build a collaborative knowledge base for GCP enthusiasts.
