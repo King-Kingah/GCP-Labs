@@ -13,6 +13,8 @@ This repository offers practical and well-documented solutions to a variety of G
 - **Sample Code**: Access well-commented sample code and scripts that can be easily adapted for your specific needs.
 
 ### The Challenges:
-|     Challange Name     |     Description     |
-|   -------------------  |  -----------------  |
-|1. Challenge #1         | Simple description. |
+
+| Challange Name                                      | Description                                                          | Link                                                                     |
+| --------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| 1. Create and Manage Cloud Resources: Challenge Lab | - Compute Instance<br/>- Kubernetes cluster<br/>- HTTP Load balancer | [Link](https://www.cloudskillsboost.google/focuses/10258?parent=catalog) |
+| 2. Create and Manage Cloud Resources: Challenge Lab |                                                                      |                                                                          |
