@@ -1,15 +1,17 @@
 # Create and Manage Cloud Resources: Challenge Lab
 
 ## Overview
+
 In a challenge lab you’re given a scenario and a set of tasks. Instead of following step-by-step instructions, you will use the skills learned from the labs in the quest to figure out how to complete the tasks on your own! An automated scoring system (shown on this page) will provide feedback on whether you have completed your tasks correctly.
 
 **Topics tested:**
 
- - Create an instance
- - Create a 3-node Kubernetes cluster and run a simple service
- - Create an HTTP(s) load balancer in front of two web servers
+- Create an instance
+- Create a 3-node Kubernetes cluster and run a simple service
+- Create an HTTP(s) load balancer in front of two web servers
 
 #### Task 1: Create a project jumphost instance
+
 Run command:
 
 gcloud compute instances create nucleus-jumphost \
@@ -21,8 +23,8 @@ gcloud compute instances create nucleus-jumphost \
           --scopes cloud-platform \
           --no-address
 
-
 #### Task 2: Create a Kubernetes service cluster
+
 Run command:
 
 gcloud container clusters create nucleus-backend \
@@ -40,6 +42,7 @@ kubectl expose deployment hello-server \
           --port 8080
 
 #### Task 3: Set up an HTTP load balancer
+
 Run command:
 
 cat << EOF > startup.sh
@@ -50,13 +53,11 @@ service nginx start
 sed -i -- 's/nginx/Google Cloud Platform - '"\$HOSTNAME"'/' /var/www/html/index.nginx-debian.html
 EOF
 
-
 gcloud compute instance-templates create web-server-template \
           --metadata-from-file startup-script=startup.sh \
           --network nucleus-vpc \
           --machine-type g1-small \
           --region us-east1
-
 
 gcloud compute instance-groups managed create web-server-group \
           --base-instance-name web-server \
@@ -64,19 +65,16 @@ gcloud compute instance-groups managed create web-server-group \
           --template web-server-template \
           --region us-east1
 
-
 gcloud compute firewall-rules create web-server-firewall \
           --allow tcp:80 \
           --network nucleus-vpc
-          
-          
+
 gcloud compute http-health-checks create http-basic-check
 
 gcloud compute instance-groups managed \
           set-named-ports web-server-group \
           --named-ports http:80 \
           --region us-east1
-
 
 gcloud compute backend-services create web-server-backend \
           --protocol HTTP \
@@ -88,17 +86,15 @@ gcloud compute backend-services add-backend web-server-backend \
           --instance-group-region us-east1 \
           --global
 
-
 gcloud compute url-maps create web-server-map \
           --default-service web-server-backend
-          
+
 gcloud compute target-http-proxies create http-lb-proxy \
           --url-map web-server-map
-
 
 gcloud compute forwarding-rules create http-content-rule \
         --global \
         --target-http-proxy http-lb-proxy \
         --ports 80
-        
+
 gcloud compute forwarding-rules list
