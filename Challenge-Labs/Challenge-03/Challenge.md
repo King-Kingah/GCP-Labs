@@ -81,3 +81,21 @@ gcloud compute networks subnets create griffin-dev-mgmt-us-central1 --project=qw
 - Create a bastion host with two network interfaces, one connected to `griffin-dev-mgmt` and the other connected to `griffin-prod-mgmt`. Make sure you can SSH to the host.
 
 
+
+
+
+## Task 4. Create and configure Cloud SQL Instance
+
+1. Create a **MySQL Cloud SQL Instance** called `griffin-dev-db` in .
+2. Connect to the instance and run the following SQL commands to prepare the **WordPress** environment:
+
+```
+CREATE DATABASE wordpress;
+CREATE USER "wp_user"@"%" IDENTIFIED BY "stormwind_rules";
+GRANT ALL PRIVILEGES ON wordpress.* TO "wp_user"@"%";
+FLUSH PRIVILEGES;
+```
+
+These SQL statements create the worpdress database and create a user with access to the wordpress database.
+
+You will use the username and password in task 6.
