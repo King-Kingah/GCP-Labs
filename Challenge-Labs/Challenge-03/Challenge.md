@@ -1,7 +1,5 @@
 # Set Up and Configure a Cloud Environment in Google Cloud: Challenge Lab
 
-
-
 ### Challenge Scenario
 
 As a cloud engineer in Jooli Inc. and recently trained with Google 
@@ -46,3 +44,25 @@ receive the following request to complete these tasks. Good luck!
 #### Environment
 
 ![Google Cloud environment, Team Griffin Infrastructure diagram](https://cdn.qwiklabs.com/UE5MydlafU0QvN7zdaOLo%2BVxvETvmuPJh%2B9kZxQnOzE%3D)
+
+## Task 1. Create development VPC manually
+
+- Create a VPC called `griffin-dev-vpc` with the following subnets only:
+  
+  - `griffin-dev-wp`
+    - IP address block: `192.168.16.0/20`
+  - `griffin-dev-mgmt`
+    - IP address block: `192.168.32.0/20`
+
+
+
+From Google command line:
+
+gcloud compute networks create griffin-dev-vpc --project=qwiklabs-gcp-00-3d36027475b7 --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional && gcloud compute networks subnets create griffin-dev-wp-us-central1 --project=qwiklabs-gcp-00-3d36027475b7 --range=192.168.16.0/20 --stack-type=IPV4_ONLY --network=managementnet --region=us-central1 && 
+gcloud compute networks subnets create griffin-dev-mgmt-us-central1 --project=qwiklabs-gcp-00-3d36027475b7 --range=192.168.32.0/20 --stack-type=IPV4_ONLY --network=managementnet --region=us-central1
+
+
+
+
+
+
