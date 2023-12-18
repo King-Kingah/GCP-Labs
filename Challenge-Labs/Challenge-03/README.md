@@ -1,32 +1,36 @@
 # Set Up and Configure a Cloud Environment in Google Cloud
 
 ### Tasks:
+
 1.
 2.
 3. Multiple VPC Networks
 4. Managing Deployments Using Kubernetes Engine 
-
 
 ### 1.
 
 ### 2.
 
 ### 3. Multiple VPC Networks
+
 #### Overview
+
 In this lab you create several VPC networks and VM instances and test connectivity across networks. Specifically, you create two custom mode networks (managementnet and privatenet) with firewall rules and VM instances as shown in this network diagram:
 ![Alt text](./image.png)
 
 The **mynetwork** network with its firewall rules and two VM instances (**mynet-{Region}-vm** and **mynet-{Region}-vm**) have already been created for you for this lab.
 
 #### Objectives
+
 In this lab, you will learn how to perform the following tasks:
 
- - Create custom mode VPC networks with firewall rules
- - Create VM instances using Compute Engine
- - Explore the connectivity for VM instances across VPC networks
- - Create a VM instance with multiple network interfaces
+- Create custom mode VPC networks with firewall rules
+- Create VM instances using Compute Engine
+- Explore the connectivity for VM instances across VPC networks
+- Create a VM instance with multiple network interfaces
 
 #### Task 1. Create custom mode VPC networks with firewall rules
+
 Create two custom networks **managementnet** and **privatenet**, along with firewall rules to allow **SSH**, **ICMP**, and **RDP** ingress traffic.
 
 **Create the managementnet network**
@@ -36,7 +40,7 @@ Create the managementnet network using the Cloud Console.
 1. In the Cloud Console, navigate to Navigation menu (**Navigation menu** ) > **VPC network** > **VPC networks**.
 
 2. Notice the **default** and **mynetwork** networks with their subnets.
-
+   
    Each Google Cloud project starts with the **default** network. In addition, the **mynetwork** network has been premade as part of your network diagram.
 
 3. Click **Create VPC Network**.
@@ -52,8 +56,10 @@ Create the managementnet network using the Cloud Console.
 **Create the firewall rules for privatenet**
 
 #### Task 2. Create VM instances
+
 Create two VM instances:
 -
+
 -
 
 **Create the managementnet--vm instance**
@@ -77,11 +83,13 @@ Every instance in a VPC network has a default network interface. You can create 
 **Explore the network interface detail**
 **Explore the network interface connectivity**
 
-### 4. Managing Deployments Using Kubernetes Engine 
+### 4. Managing Deployments Using Kubernetes Engine
+
 #### Overview
 
 Dev Ops practices will regularly make use of multiple deployments to manage application deployment scenarios such as "Continuous deployment", "Blue-Green deployments", "Canary deployments" and more. This lab provides practice in scaling and managing containers so you can accomplish these common scenarios where multiple heterogeneous deployments are being used.
-Objectives
+
+**Objectives**
 
 - Practice with kubectl tool
 - Create deployment yaml files
@@ -127,7 +135,11 @@ gcloud container clusters create bootcamp \
 ```
 
 #### Task 1. Learn about the deployment object
+
 #### Task 2. Create a deployment
+
 #### Task 3. Rolling update
+
 #### Task 4. Canary deployments
+
 #### Task 5. Blue-green deployments
