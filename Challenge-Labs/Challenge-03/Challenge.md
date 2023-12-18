@@ -32,3 +32,17 @@ Some Jooli Inc. standards you should follow:
   excessive resource use will result in the containing project's 
   termination (and possibly yours), so beware. This is the guidance the 
   monitoring team is willing to share: unless directed, use `e2-medium`.
+
+### The Challenge
+
+ou need to help the team with some of their initial work on a new 
+project. They plan to use WordPress and need you to set up a development
+ environment. Some of the work was already done for you, but other parts
+ require your expert skills.
+
+As soon as you sit down at your desk and open your new laptop you 
+receive the following request to complete these tasks. Good luck!
+
+#### Environment
+
+![Google Cloud environment, Team Griffin Infrastructure diagram](https://cdn.qwiklabs.com/UE5MydlafU0QvN7zdaOLo%2BVxvETvmuPJh%2B9kZxQnOzE%3D)
