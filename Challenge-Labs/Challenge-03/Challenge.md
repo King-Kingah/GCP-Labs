@@ -63,6 +63,21 @@ gcloud compute networks subnets create griffin-dev-mgmt-us-central1 --project=qw
 
 
 
+## Task 2. Create production VPC manually
 
+- Create a VPC called `griffin-prod-vpc` with the following subnets only:
+  
+  - `griffin-prod-wp`
+    - IP address block: `192.168.48.0/20`
+  - `griffin-prod-mgmt`
+    - IP address block: `192.168.64.0/20`
+
+
+
+
+
+## Task 3. Create bastion host
+
+- Create a bastion host with two network interfaces, one connected to `griffin-dev-mgmt` and the other connected to `griffin-prod-mgmt`. Make sure you can SSH to the host.
 
 
