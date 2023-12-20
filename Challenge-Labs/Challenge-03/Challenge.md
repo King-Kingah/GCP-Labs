@@ -172,3 +172,9 @@ At this point the dev team will take over and complete the install and you move 
 ## Task 8. Enable monitoring
 
 - Create an uptime check for your WordPress development site.
+
+## Task 9. Provide access for an additional engineer
+
+- You have an additional engineer starting and you want to ensure they have access to the project, so please go ahead and grant them the editor role to the project.
+
+The second user account for the lab represents the additional engineer.
