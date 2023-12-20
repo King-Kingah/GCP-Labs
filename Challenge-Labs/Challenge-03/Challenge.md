@@ -54,6 +54,8 @@ receive the following request to complete these tasks. Good luck!
   - `griffin-dev-mgmt`
     - IP address block: `192.168.32.0/20`
 
+From Google command line:
+
 ```
 gcloud compute networks create griffin-dev-vpc --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-dev-vpc --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
 ```
@@ -110,9 +112,11 @@ gcloud compute networks subnets create griffin-prod-mgmt --project=qwiklabs-gcp-
 
 - Create a bastion host with two network interfaces, one connected to `griffin-dev-mgmt` and the other connected to `griffin-prod-mgmt`. Make sure you can SSH to the host.
 
+
+
 ## Task 4. Create and configure Cloud SQL Instance
 
-1. Create a **MySQL Cloud SQL Instance** called `griffin-dev-db` in .
+1. Create a **MySQL Cloud SQL Instance** called `griffin-dev-db` in {`REGION`}.
 2. Connect to the instance and run the following SQL commands to prepare the **WordPress** environment:
 
 ```
@@ -125,3 +129,11 @@ FLUSH PRIVILEGES;
 These SQL statements create the worpdress database and create a user with access to the wordpress database.
 
 You will use the username and password in task 6.
+
+
+## Task 5. Create Kubernetes cluster
+
+- Create a 2 node cluster (e2-standard-4) called `griffin-dev`, in the `griffin-dev-wp` subnet, and in zone {ZONE}.
+
+
+## 
