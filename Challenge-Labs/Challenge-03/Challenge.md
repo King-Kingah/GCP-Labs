@@ -54,7 +54,21 @@ receive the following request to complete these tasks. Good luck!
   - `griffin-dev-mgmt`
     - IP address block: `192.168.32.0/20`
 
-From Google command line:
+```
+gcloud compute networks create griffin-dev-vpc --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-dev-vpc --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
+```
+
+
+```
+gcloud compute networks subnets create griffin-dev-wp --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-dev-wp --range=192.168.16.0/20 --stack-type=IPV4_ONLY --network=griffin-dev-vpc --region=us-east1
+```
+
+
+```
+gcloud compute networks subnets create griffin-dev-mgmt --project=qwiklabs-gcp-00-f4c0a46d555c --range=192.168.32.0/20 --stack-type=IPV4_ONLY --network=griffin-dev-vpc --region=us-east1
+```
+
+
 
 gcloud compute networks create griffin-dev-vpc --project=qwiklabs-gcp-00-3d36027475b7 --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional && gcloud compute networks subnets create griffin-dev-wp-us-central1 --project=qwiklabs-gcp-00-3d36027475b7 --range=192.168.16.0/20 --stack-type=IPV4_ONLY --network=managementnet --region=us-central1 && 
 gcloud compute networks subnets create griffin-dev-mgmt-us-central1 --project=qwiklabs-gcp-00-3d36027475b7 --range=192.168.32.0/20 --stack-type=IPV4_ONLY --network=managementnet --region=us-central1
@@ -67,24 +81,24 @@ gcloud compute networks subnets create griffin-dev-mgmt-us-central1 --project=qw
     - IP address block: `192.168.48.0/20`
   - `griffin-prod-mgmt`
     - IP address block: `192.168.64.0/20`
-  
-  gcloud compute networks create griffin-dev-vpc --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-dev-vpc --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
-  
-  gcloud compute networks subnets create griffin-dev-wp --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-dev-wp --range=192.168.16.0/20 --stack-type=IPV4_ONLY --network=griffin-dev-vpc --region=us-east1
-  
-  gcloud compute networks subnets create griffin-dev-mgmt --project=qwiklabs-gcp-00-f4c0a46d555c --range=192.168.32.0/20 --stack-type=IPV4_ONLY --network=griffin-dev-vpc --region=us-east1
 
+From Google command line:
 
-
-
-
+```
 gcloud compute networks create griffin-prod-vpc --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-prod-vpc --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
 
+```
+
+
+```
 gcloud compute networks subnets create griffin-prod-wp --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-prod-wp --range=192.168.48.0/20 --stack-type=IPV4_ONLY --network=griffin-prod-vpc --region=us-east1
 
+```
+
+```
 gcloud compute networks subnets create griffin-prod-mgmt --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-prod-mgmt --range=192.168.64.0/20 --stack-type=IPV4_ONLY --network=griffin-prod-vpc --region=REGION
 
-
+```
 
 
 
