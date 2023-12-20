@@ -136,4 +136,25 @@ You will use the username and password in task 6.
 - Create a 2 node cluster (e2-standard-4) called `griffin-dev`, in the `griffin-dev-wp` subnet, and in zone {ZONE}.
 
 
-## 
+## Task 6. Prepare the Kubernetes cluster
+
+1. Use Cloud Shell and copy all files from gs://cloud-training/gsp321/wp-k8s.
+
+The WordPress server needs to access the MySQL database using the username and password you created in task 4.
+
+2. You do this by setting the values as secrets. WordPress also needs to store its working files outside the container, so you need to create a volume.
+
+3. Add the following secrets and volume to the cluster using wp-env.yaml.
+
+4. Make sure you configure the username to wp_user and password to stormwind_rules before creating the configuration.
+
+You also need to provide a key for a service account that was already set up. This service account provides access to the database for a sidecar container.
+
+5. Use the command below to create the key, and then add the key to the Kubernetes environment:
+
+```
+gcloud iam service-accounts keys create key.json \
+    --iam-account=cloud-sql-proxy@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
+kubectl create secret generic cloudsql-instance-credentials \
+    --from-file key.json
+```
