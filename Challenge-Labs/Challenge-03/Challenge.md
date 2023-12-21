@@ -162,6 +162,12 @@ kubectl create secret generic cloudsql-instance-credentials \
     --from-file key.json
 ```
 
+gsutil -m cp -r gs://cloud-training/gsp321/wp-k8s .
+cd wp-k8s
+
+
+
+
 ## Task 7. Create a WordPress deployment
 
 Now that you have provisioned the MySQL database, and set up the secrets and volume, you can create the deployment using wp-deployment.yaml.
