@@ -167,6 +167,10 @@ cd wp-k8s
 
 
 
+sed -i s/YOUR_USERNAME/wp_user/g wp-env.yaml
+
+sed -i s/YOUR_PASSWORD/stormwind_rules/g wp-env.yaml
+
 
 ## Task 7. Create a WordPress deployment
 
