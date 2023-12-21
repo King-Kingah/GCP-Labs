@@ -131,6 +131,14 @@ You will use the username and password in task 6.
 - Create a 2 node cluster (e2-standard-4) called `griffin-dev`, in the `griffin-dev-wp` subnet, and in zone {ZONE}.
 
 
+gcloud container clusters create griffin-dev \
+  --network=griffin-dev-vpc \
+  --subnetwork=griffin-dev-wp \
+  --machine-type e2-standard-4 \
+  --num-nodes 2 \
+  --zone=us-east4-c
+
+
 ## Task 6. Prepare the Kubernetes cluster
 
 1. Use Cloud Shell and copy all files from gs://cloud-training/gsp321/wp-k8s.
