@@ -162,14 +162,27 @@ kubectl create secret generic cloudsql-instance-credentials \
     --from-file key.json
 ```
 
+---------------------------------------------------------
+
 gsutil -m cp -r gs://cloud-training/gsp321/wp-k8s .
 cd wp-k8s
-
 
 
 sed -i s/YOUR_USERNAME/wp_user/g wp-env.yaml
 
 sed -i s/YOUR_PASSWORD/stormwind_rules/g wp-env.yaml
+
+---------------------------------------------------------
+
+kubectl create -f wp-env.yaml
+
+
+gcloud iam service-accounts keys create key.json \
+    --iam-account=cloud-sql-proxy@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
+kubectl create secret generic cloudsql-instance-credentials \
+    --from-file key.json
+
+---------------------------------------------------------
 
 
 ## Task 7. Create a WordPress deployment
