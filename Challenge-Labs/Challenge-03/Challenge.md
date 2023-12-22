@@ -164,24 +164,32 @@ kubectl create secret generic cloudsql-instance-credentials \
 
 ---------------------------------------------------------
 
+```
 gsutil -m cp -r gs://cloud-training/gsp321/wp-k8s .
 cd wp-k8s
+```
 
 
+```
 sed -i s/YOUR_USERNAME/wp_user/g wp-env.yaml
+```
 
+
+```
 sed -i s/YOUR_PASSWORD/stormwind_rules/g wp-env.yaml
-
+```
 ---------------------------------------------------------
 
+```
 kubectl create -f wp-env.yaml
+```
 
-
+```
 gcloud iam service-accounts keys create key.json \
     --iam-account=cloud-sql-proxy@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
 kubectl create secret generic cloudsql-instance-credentials \
     --from-file key.json
-
+```
 ---------------------------------------------------------
 
 
@@ -200,16 +208,21 @@ Now that you have provisioned the MySQL database, and set up the secrets and vol
 5. Once the Load Balancer is created, you can visit the site and ensure you see the WordPress site installer.
 At this point the dev team will take over and complete the install and you move on to the next task.
 
+```
 I=$(gcloud sql instances describe griffin-dev-db --format="value(connectionName)")
+```
 
+
+```
 sed -i s/YOUR_SQL_INSTANCE/$I/g wp-deployment.yaml
+```
 
 ---------------------------------------------------------
-
+```
 kubectl create -f wp-deployment.yaml
 
 kubectl create -f wp-service.yaml
-
+```
 
 ## Task 8. Enable monitoring
 
