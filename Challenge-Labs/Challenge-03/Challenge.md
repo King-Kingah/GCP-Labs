@@ -216,10 +216,15 @@ kubectl create -f wp-service.yaml
 - Create an uptime check for your WordPress development site.
 
 ---------------------------------------------------------
+
 // Navigation Menu -> Kubernetes Engine -> Services and Ingress -> Copy Endpoint's address.
 
+-------------------------------------------------------------
 
+// Navigation Menu -> Monitoring -> Uptime Checks -> + CREATE UPTIME CHECK Title : Wordpress Uptime 
+// Next -> Target Hostname : {Endpoint's address} (without http...) Path : / // Next -> Next -> Create
 
+------------------------------------------------------------
 
 ## Task 9. Provide access for an additional engineer
 
