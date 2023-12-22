@@ -231,3 +231,9 @@ kubectl create -f wp-service.yaml
 - You have an additional engineer starting and you want to ensure they have access to the project, so please go ahead and grant them the editor role to the project.
 
 The second user account for the lab represents the additional engineer.
+
+------------------------------------------------------------
+
+// Navigation Menu -> IAM & Admin -> IAM -> ADD New Member : {Username 2 from Lab instruction page} Role : Project -> Editor
+
+// Save.
