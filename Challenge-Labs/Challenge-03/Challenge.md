@@ -204,6 +204,12 @@ I=$(gcloud sql instances describe griffin-dev-db --format="value(connectionName)
 
 sed -i s/YOUR_SQL_INSTANCE/$I/g wp-deployment.yaml
 
+---------------------------------------------------------
+
+kubectl create -f wp-deployment.yaml
+
+kubectl create -f wp-service.yaml
+
 
 ## Task 8. Enable monitoring
 
