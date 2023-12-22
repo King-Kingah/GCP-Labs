@@ -200,6 +200,11 @@ Now that you have provisioned the MySQL database, and set up the secrets and vol
 5. Once the Load Balancer is created, you can visit the site and ensure you see the WordPress site installer.
 At this point the dev team will take over and complete the install and you move on to the next task.
 
+I=$(gcloud sql instances describe griffin-dev-db --format="value(connectionName)")
+
+sed -i s/YOUR_SQL_INSTANCE/$I/g wp-deployment.yaml
+
+
 ## Task 8. Enable monitoring
 
 - Create an uptime check for your WordPress development site.
