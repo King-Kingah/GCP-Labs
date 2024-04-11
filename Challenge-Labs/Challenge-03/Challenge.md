@@ -60,17 +60,13 @@ From Google command line:
 gcloud compute networks create griffin-dev-vpc --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-dev-vpc --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
 ```
 
-
 ```
 gcloud compute networks subnets create griffin-dev-wp --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-dev-wp --range=192.168.16.0/20 --stack-type=IPV4_ONLY --network=griffin-dev-vpc --region=us-east1
 ```
 
-
 ```
 gcloud compute networks subnets create griffin-dev-mgmt --project=qwiklabs-gcp-00-f4c0a46d555c --range=192.168.32.0/20 --stack-type=IPV4_ONLY --network=griffin-dev-vpc --region=us-east1
 ```
-
-
 
 gcloud compute networks create griffin-dev-vpc --project=qwiklabs-gcp-00-3d36027475b7 --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional && gcloud compute networks subnets create griffin-dev-wp-us-central1 --project=qwiklabs-gcp-00-3d36027475b7 --range=192.168.16.0/20 --stack-type=IPV4_ONLY --network=managementnet --region=us-central1 && 
 gcloud compute networks subnets create griffin-dev-mgmt-us-central1 --project=qwiklabs-gcp-00-3d36027475b7 --range=192.168.32.0/20 --stack-type=IPV4_ONLY --network=managementnet --region=us-central1
@@ -88,26 +84,19 @@ From Google command line:
 
 ```
 gcloud compute networks create griffin-prod-vpc --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-prod-vpc --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
-
 ```
-
 
 ```
 gcloud compute networks subnets create griffin-prod-wp --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-prod-wp --range=192.168.48.0/20 --stack-type=IPV4_ONLY --network=griffin-prod-vpc --region=us-east1
-
 ```
 
 ```
 gcloud compute networks subnets create griffin-prod-mgmt --project=qwiklabs-gcp-00-f4c0a46d555c --description=griffin-prod-mgmt --range=192.168.64.0/20 --stack-type=IPV4_ONLY --network=griffin-prod-vpc --region=REGION
-
 ```
-
 
 ## Task 3. Create bastion host
 
 - Create a bastion host with two network interfaces, one connected to `griffin-dev-mgmt` and the other connected to `griffin-prod-mgmt`. Make sure you can SSH to the host.
-
-
 
 ## Task 4. Create and configure Cloud SQL Instance
 
@@ -125,11 +114,9 @@ These SQL statements create the worpdress database and create a user with access
 
 You will use the username and password in task 6.
 
-
 ## Task 5. Create Kubernetes cluster
 
 - Create a 2 node cluster (e2-standard-4) called `griffin-dev`, in the `griffin-dev-wp` subnet, and in zone {ZONE}.
-
 
 gcloud container clusters create griffin-dev \
   --network=griffin-dev-vpc \
@@ -137,7 +124,6 @@ gcloud container clusters create griffin-dev \
   --machine-type e2-standard-4 \
   --num-nodes 2 \
   --zone=us-east4-c
-
 
 ## Task 6. Prepare the Kubernetes cluster
 
@@ -169,15 +155,14 @@ gsutil -m cp -r gs://cloud-training/gsp321/wp-k8s .
 cd wp-k8s
 ```
 
-
 ```
 sed -i s/YOUR_USERNAME/wp_user/g wp-env.yaml
 ```
 
-
 ```
 sed -i s/YOUR_PASSWORD/stormwind_rules/g wp-env.yaml
 ```
+
 ---------------------------------------------------------
 
 ```
@@ -190,8 +175,8 @@ gcloud iam service-accounts keys create key.json \
 kubectl create secret generic cloudsql-instance-credentials \
     --from-file key.json
 ```
----------------------------------------------------------
 
+---------------------------------------------------------
 
 ## Task 7. Create a WordPress deployment
 
@@ -206,18 +191,18 @@ Now that you have provisioned the MySQL database, and set up the secrets and vol
 4. After you create your WordPress deployment, create the service with wp-service.yaml.
 
 5. Once the Load Balancer is created, you can visit the site and ensure you see the WordPress site installer.
-At this point the dev team will take over and complete the install and you move on to the next task.
+   At this point the dev team will take over and complete the install and you move on to the next task.
 
 ```
 I=$(gcloud sql instances describe griffin-dev-db --format="value(connectionName)")
 ```
-
 
 ```
 sed -i s/YOUR_SQL_INSTANCE/$I/g wp-deployment.yaml
 ```
 
 ---------------------------------------------------------
+
 ```
 kubectl create -f wp-deployment.yaml
 
